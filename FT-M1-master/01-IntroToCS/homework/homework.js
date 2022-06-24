@@ -25,7 +25,7 @@ do {
   }
 } while (num >= 1);
 return result.join("")
-//  return parseInt(a,2);
+
 
 }
 
