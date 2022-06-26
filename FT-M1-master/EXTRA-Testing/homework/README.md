@@ -6,7 +6,7 @@ La idea de esta homework será realizar TDD para el desarrollo de una aplicació
 
   1. Armar el asociado a esa funcionalidad
   2. Ejecutarlo chequeando que no pasen
-  3. Completar el código JS para hacer pasar el test
+  3. Completar el cn
   4. Ejecutar y verificar que pase el test sin haber roto ningún test anterior, sino volver a 3 arreglando los errores
   5. Avanzar a la siguiente funcionalidad
 
@@ -38,7 +38,7 @@ Comprobar que existe una función llamada `checkSeatStatus`. Les dejamos comenta
 
 __PISTA__: Deberán chequear que esa variable sea de tipo 'function' (¿Cómo era esto? Estoy seguro que lo vimos en el Prep)
 
-<details>
+<details> 
   <summary>ANSWER TEST CODE</summary>
   
   ```js
