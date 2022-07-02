@@ -15,10 +15,45 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+if (n === 0 || n === 1) return 1
+if (n < 0) return 0
+return n * nFactorial(n-1)
+
 }
 
+
+// 6 * nFactorial(5) === 6 *120 
+// 5 * nFactorial(4) === 5* 24 = 120
+//     4 * nFactorial(4) === 4 * 6 = 24
+//          3 * nFactorial(3) == 3 * 2 = 6
+//               2* nFactorial(2) = 2*1 = 2
+//                   nFactorial(1)=1 
+
+
+
+
 function nFibonacci(n) {
+// n[0]===0
+// n[1]===1
+// if (n === 10) return n
+// return nFibonacci((n-1)+(n-2))
+//----------------------------- ---
+// if (n>=0 && n<2) return n
+if (n === 1) return 1
+if (n === 0) return 0
+return nFibonacci(n-1) + nFibonacci (n-2);
 }
+
+// 6= 5 + 3 = 8
+// nFibonacci (5) = nFibonacci (4) + nFibonacci (3) =5
+// nFibonacci(4) = nFibonacci (3) + nFibonacci (2) == 2 +1 =3
+// = 3nFibonacci (3) = nFibonacci (2) + nFibonacci (n-2) == 1 + (3-2) = 1+1 = 2
+// nFibonacci (2) = nFibonacci (1) + nFibonacci (n-2) ==> nFibonacci (2) = 1 + (2-2) = 1+ 0 == 1
+// nFibonacci (1) = 1
+
+
+
+
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -30,8 +65,30 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
+  this.nuevo = [];
+  // this.saludo = 'hola'
 }
+
+let q1 = new Queue();
+
+// Queue.prototype.saludo = function () {
+// return this.saludo = 'hola'
+// }
+
+Queue.prototype.size = function (){
+  return this.nuevo.length;
+    }
+
+Queue.prototype.enqueue = function (ele){
+  return this.nuevo.push(ele);
+}
+
+Queue.prototype.dequeue = function (){
+  return this.nuevo.shift();
+  }
+
+
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
