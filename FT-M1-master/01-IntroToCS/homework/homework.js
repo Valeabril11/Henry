@@ -9,6 +9,8 @@ for (let item in num){
     suma += Math.pow(2,item);
   }}
 return suma;
+
+
   // tu codigo aca
 }
 
