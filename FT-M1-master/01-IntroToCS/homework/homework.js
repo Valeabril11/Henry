@@ -11,7 +11,7 @@ for (let item in num){
 return suma;
 
 
-  // tu codigo aca
+  
 }
 
 function DecimalABinario(num) {
