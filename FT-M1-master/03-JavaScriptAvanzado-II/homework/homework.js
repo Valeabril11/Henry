@@ -58,8 +58,8 @@ function cacheFunction(cb) {
 
   */
  // cache={ 4: 8 , 5: 10, 10: 20}
+// push
 
- 
 const cache = {}
 
   return function (arg){
