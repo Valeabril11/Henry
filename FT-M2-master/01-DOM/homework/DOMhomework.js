@@ -1,12 +1,18 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
-
+let toDoItems = []
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
 
+// var a = document.querySelector('#createdBy')
+// console.log(a)
+// a.innerText = a.innerText + ' Valeria'
+
+let autor = document.querySelector('#createdBy');
+autor.innerHTML = autor.innerHTML + ' Valeabril<3';
 
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
@@ -16,13 +22,18 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
+function ToDo (description) {
+  
   // Tu código acá:
+  this.description = description;
+  this.complete = false;
+
+  //ToDo.prototype.completeToDo = function ();
 
 }
 
 
-// Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
+// Agregar un médada denominado 'completedada' al prototipo de la clase ToDo
 // No requiere ningún argumento
 // Debe setear el atributo 'complete' del ToDo en true
 
@@ -50,7 +61,18 @@ function ToDo () {
 
 function buildToDo(todo, index) {
   // Tu código acá:
-
+let toDoShell = document.createElement('div') //1
+toDoShell.setAttribute('class','toDoShell') //2
+toDoShell.addEventListener('click', completeToDo)
+let toDoText = document.createElement('span') //3
+toDoText.innerHTML = todo.description; // le asignamos leer 4 <span id= index> leer </span>
+toDoText.setAttribute('id', index); //5
+// 6, tengo que hacer algo solo si es verdadero entonces hago un if solo y no un if else
+if(todo.complete){
+  toDoText.setAttribute('class', 'completeText')
+}
+toDoShell.appendChild(toDoText)
+return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -61,6 +83,10 @@ function buildToDo(todo, index) {
 function buildToDos(toDos) {
   // Tu código acá:
 
+  let resultado = toDos.map(function(todo, index) {
+    return builToDo(todo, index)
+  })
+  return resultado;
 }
 
 
@@ -73,10 +99,17 @@ function buildToDos(toDos) {
 //     línea para hacer el llamado a esta funcion (displayToDos)
 //  6) Abrir o en el caso de ya tenerlo abierto, recargar, la página
 
-function displayToDos() {
+function displayToDos()  {
   // Tu código acá:
+  let toDoContainer = document.querySelector('#toDoContainer');
+  toDoContainer.innerHTML = '';
+  let toDos = buildToDos(toDoItems);
+  toDos.foreach (function (todo){
+    return toDoContainer.appendChild(todo);
+  })
 
 }
+
 
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -90,6 +123,12 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
+  let toDoValue = document.getElementById('toDoInput').value;
+
+  let newToDo = new ToDo(toDoValue); // aca estoy creando un objeto que esta teniendo lo que agregue en el recuadro de escriba algo' y es {description: leer, complete: false}
+  toDoItems.push(newToDo)
+  document.getElementById('toDoInput').value = ''
+  displayToDos();
 
 }
 
@@ -100,6 +139,13 @@ function addToDo() {
 
 // Tu código acá:
 
+let agregar = document.querySelector('#addButton') // ahora debo agregarle un even listener
+agregar.addEventListener('click', addToDo) // va a funcionar el add todo cuando yo haga click en agregar o cuando apriete enter
+document.querySelector('#toDoInput').addEventListener('keypress', function(evento){
+  if(event.keyCode === 13){
+    addToDo();
+  }
+})
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
@@ -117,6 +163,10 @@ function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
   // const index = event.target.id;
   // Tu código acá:
+  const index = event.target.id;
+  toDoItems[index].completeToDo();
+    displayToDos();
+  
 
 }
 
